@@ -67,8 +67,6 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+2 move right
 
 # split orientation
-#bindsym $mod+b split h;exec notify-send 'tile horizontally'
-#bindsym $mod+v split v;exec notify-send 'tile vertically'
 bindsym $mod+v split toggle
 
 # toggle fullscreen mode for the focused container
@@ -84,12 +82,6 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# toggle sticky
-#bindsym $mod+Shift+i sticky toggle
-
-# focus the parent container
-#bindsym $mod+a focus parent
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -350,11 +342,12 @@ exec --no-startup-id xset r rate 280 30
 bindsym $mod+c exec chromium
 assign [class="Chromium"] $ws1
 
-bindsym $mod+i exec clion
 assign [class="jetbrains-*"] $ws2
 
 bindsym $mod+Return exec terminator
-assign [class="Terminator"] $ws3
+
+bindsym $mod+p exec okular
+assign [class="okular"] $ws4
 
 
 # Start Applications
