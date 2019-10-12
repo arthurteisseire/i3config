@@ -339,6 +339,8 @@ exec --no-startup-id xset r rate 280 30
 #####################
 #       Apps        #
 #####################
+
+# Workspace Applications
 bindsym $mod+c exec chromium
 assign [class="Chromium"] $ws1
 
@@ -350,7 +352,10 @@ bindsym $mod+p exec okular
 assign [class="okular"] $ws4
 
 
-# Start Applications
+# Startup Applications
+exec --no-startup-id redshift-gtk
+
+# Other Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
