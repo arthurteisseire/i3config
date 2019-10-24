@@ -187,7 +187,6 @@ mode "$mode_system" {
 
 # Lock screen
 bindsym $mod+w exec --no-startup-id blurlock
-exec --no-startup-id xss-lock -- blurlock
 
 
 # Resize window (you can also use the mouse for that)
