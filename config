@@ -43,8 +43,8 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 ################################################################################################
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 1; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 1; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 3; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 3; notify-send 'brightness down'"
 
 # focus_follows_mouse no
 
@@ -341,6 +341,7 @@ bindsym $mod+c exec firefox
 assign [class="firefox"] $ws1
 
 assign [class="jetbrains-*"] $ws2
+assign [class="java-lang-Thread"] $ws2
 
 bindsym $mod+Return exec terminator
 
