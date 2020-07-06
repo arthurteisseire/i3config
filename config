@@ -325,6 +325,11 @@ mode "$mode_ide" {
 }
 
 #####################
+#      Screen       #
+#####################
+bindsym $mod+Tab move workspace to output left
+
+#####################
 #     Keyboard      #
 #####################
 exec --no-startup-id "setxkbmap -option 'grp:ctrls_toggle' -layout us-custom,fr"
@@ -337,8 +342,8 @@ exec --no-startup-id xset r rate 280 30
 #####################
 
 # Workspace Applications
-bindsym $mod+c exec firefox
-assign [class="firefox"] $ws1
+bindsym $mod+c exec brave
+assign [class="Brave-browser"] $ws1
 
 assign [class="jetbrains-*"] $ws2
 assign [class="java-lang-Thread"] $ws2
@@ -347,6 +352,9 @@ bindsym $mod+Return exec terminator
 
 bindsym $mod+p exec okular
 assign [class="okular"] $ws4
+
+bindsym $mod+o exec postman
+assign [class="Postman"] $ws7
 
 
 # Startup Applications
