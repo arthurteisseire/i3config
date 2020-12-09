@@ -34,7 +34,7 @@ bindsym $mod+y exec --no-startup-id morc_menu
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
+#exec --no-startup-id volumeicon
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
@@ -49,17 +49,12 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 3; notify-send 'brightness d
 # focus_follows_mouse no
 
 # change focus
-bindsym $mod+1 focus left
-bindsym $mod+2 focus right
-
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+1 move left
-bindsym $mod+Shift+2 move right
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -89,16 +84,51 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
+
+
+### This is the config to have workspace of workspaces ###
+
+#set $exec_i3_groups exec --no-startup-id i3-workspace-groups
+
+# Switch active workspace group
+#bindsym $mod+1 exec --no-startup-id i3-switch-active-workspace-group
+
+# Assign workspace to a group
+#bindsym $mod+Shift+1 exec --no-startup-id i3-assign-workspace-to-group
+
+#bindsym $mod+a $exec_i3_groups workspace-number $ws1
+#bindsym $mod+s $exec_i3_groups workspace-number $ws2
+#bindsym $mod+d $exec_i3_groups workspace-number $ws3
+#bindsym $mod+f $exec_i3_groups workspace-number $ws4
+#bindsym $mod+g $exec_i3_groups workspace-number $ws5
+#bindsym $mod+h $exec_i3_groups workspace-number $ws6
+#bindsym $mod+j $exec_i3_groups workspace-number $ws7
+#bindsym $mod+k $exec_i3_groups workspace-number $ws8
+#bindsym $mod+l $exec_i3_groups workspace-number $ws9
+#bindsym $mod+semicolon $exec_i3_groups workspace-number $ws10
+
+#bindsym $mod+Shift+a $exec_i3_groups move-to-number $ws1
+#bindsym $mod+Shift+s $exec_i3_groups move-to-number $ws2
+#bindsym $mod+Shift+d $exec_i3_groups move-to-number $ws3
+#bindsym $mod+Shift+f $exec_i3_groups move-to-number $ws4
+#bindsym $mod+Shift+g $exec_i3_groups move-to-number $ws5
+#bindsym $mod+Shift+h $exec_i3_groups move-to-number $ws6
+#bindsym $mod+Shift+j $exec_i3_groups move-to-number $ws7
+#bindsym $mod+Shift+k $exec_i3_groups move-to-number $ws8
+#bindsym $mod+Shift+l $exec_i3_groups move-to-number $ws9
+#bindsym $mod+Shift+semicolon $exec_i3_groups move-to-number $ws10
+
+
+
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
 
-
-set $ws1 "1: Browser"
-set $ws2 "2: Ide"
-set $ws3 "3: Terminal"
-set $ws4 "4: Pdf"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -106,7 +136,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# switch to workspace
+## switch to workspace
 bindsym $mod+a workspace $ws1
 bindsym $mod+s workspace $ws2
 bindsym $mod+d workspace $ws3
@@ -186,7 +216,7 @@ mode "$mode_system" {
 }
 
 # Lock screen
-bindsym $mod+w exec --no-startup-id blurlock
+bindsym $mod+w exec --no-startup-id i3exit lock
 
 
 # Resize window (you can also use the mouse for that)
@@ -218,8 +248,9 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
+#exec --no-startup-id pamac-tray
+#exec --no-startup-id clipit
+#exec --no-startup-id blueman-manager
 #exec --no-startup-id blueman-applet
 #exec --no-startup-id sbxkb
 #exec --no-startup-id xautolock -time 10 -locker blurlock
@@ -342,7 +373,7 @@ exec --no-startup-id xset r rate 280 30
 #####################
 
 # Workspace Applications
-bindsym $mod+c exec brave
+bindsym $mod+c exec chromium
 assign [class="Brave-browser"] $ws1
 
 assign [class="jetbrains-*"] $ws2
@@ -358,7 +389,8 @@ assign [class="Postman"] $ws7
 
 
 # Startup Applications
-exec --no-startup-id redshift-gtk
+#exec --no-startup-id redshift-gtk
+exec --no-startup-id low_brightness
 
 # Other Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -371,3 +403,10 @@ bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+# Notification manager
+exec --no-startup-id dunst
+
+# Pomodoro start and end notifications
+bindsym $mod+Control+p exec notify-send --icon=gtk-info Pomodoro "Focus for 25 minutes" && sleep 2500 && i3exit lock
+bindsym $mod+Control+s exec notify-send --icon=gtk-info Pomodoro "Take 5 minutes break" && sleep 500 && bindsym $mod+Control+s exec notify-send --icon=gtk-info Pomodoro "Break finished"
